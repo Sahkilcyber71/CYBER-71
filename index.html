@@ -1,0 +1,232 @@
+DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Hat Hacker | SAHKIL 71</title>
+    <style>
+        :root {
+            --neon-blue: #00d2ff;
+            --neon-green: #00ff88;
+            --bg-dark: #000000;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* RGB Border Animation */
+        @keyframes rgb-border {
+            0% { border-color: #ff0000; box-shadow: 0 0 10px #ff0000; }
+            33% { border-color: #00ff00; box-shadow: 0 0 10px #00ff00; }
+            66% { border-color: #0000ff; box-shadow: 0 0 10px #0000ff; }
+            100% { border-color: #ff0000; box-shadow: 0 0 10px #ff0000; }
+        }
+
+        @keyframes name-glow {
+            0%, 100% { text-shadow: 0 0 15px var(--neon-blue); transform: scale(1.02); }
+            50% { text-shadow: 0 0 30px var(--neon-green); transform: scale(1); }
+        }
+
+        .header-scene {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .circle-outer {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid white;
+            animation: rotate3d 8s linear infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.2), transparent);
+            overflow: hidden;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes rotate3d {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        .main-title {
+            font-size: 2.2rem;
+            color: var(--neon-blue);
+            margin: 10px 0;
+            font-weight: bold;
+            animation: name-glow 3s infinite ease-in-out;
+            text-align: center;
+        }
+
+        .sub-title {
+            color: var(--neon-green);
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+            font-family: monospace;
+        }
+
+        .social-container, .app-list {
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .animated-card {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-radius: 18px;
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid;
+            animation: rgb-border 4s infinite linear;
+        }
+
+        .icon-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid #333;
+        }
+
+        .box-info h4 { margin: 0; font-size: 0.95rem; }
+        .box-info p { margin: 3px 0 0; font-size: 0.75rem; color: #bbb; }
+
+        .get-btn {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+            color: black;
+            padding: 8px 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .sys-info {
+            background: #080808;
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 410px;
+            margin: 40px 0;
+            border: 2px solid;
+            animation: rgb-border 5s infinite linear reverse;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-scene">
+        <div class="circle-outer">
+            <img src="shakil.jpg" class="profile-img" alt="Sahkil" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+        </div>
+    </div>
+
+    <h1 class="main-title">𝐒𝐚𝐡𝐤𝐢𝐥𝐜𝐲𝐛𝐞𝐫𝟕𝟏🧑‍💻</h1>
+    <p class="sub-title">Cyber Security & Pentesting Tools</p>
+
+    <div class="social-container">
+        <a href="https://t.me/Sahkilcyber71" class="animated-card">
+            <div class="icon-circle">✈</div>
+            <div class="box-info"><h4>Telegram</h4><p>@Sahkilcyber71</p></div>
+        </a>
+        <a href="https://wa.me/8801757349219" class="animated-card">
+            <div class="icon-circle">📞</div>
+            <div class="box-info"><h4>WhatsApp</h4><p>+8801757349219</p></div>
+        </a>
+        <a href="https://www.facebook.com/qgbzga2goe" class="animated-card">
+            <div class="icon-circle">👤</div>
+            <div class="box-info"><h4>Facebook</h4><p>Sahkil Profile</p></div>
+        </a>
+        <a href="mailto:sahkilcyber71@gmail.com" class="animated-card">
+            <div class="icon-circle">📧</div>
+            <div class="box-info"><h4>Gmail</h4><p>sahkilcyber71@gmail.com</p></div>
+        </a>
+    </div>
+
+    <h3 style="color: var(--neon-blue); margin-top: 40px; margin-bottom: 20px;">📥 PREMIUM HACKING TOOLS</h3>
+    
+    <div class="app-list" id="grid"></div>
+
+    <div class="sys-info">
+        <h4 style="color: #ff3c78; margin-top: 0;">[SYSTEM INFO]</h4>
+        <p style="color: #aaa; font-size: 0.85rem; line-height: 1.5;">Black hat hackers are cybercriminals who breach network security with malicious intent, seeking financial gain or data theft. Examples include Kevin Mitnick.</p>
+    </div>
+
+    <script>
+        const apps = [
+            {name: "org.adaway.apk", size: "16.06 MB"},
+            {name: "apk-editor.apk", size: "7.00 MB"},
+            {name: "WifiPassword.apk", size: "1.09 MB"},
+            {name: "WifiAccess.apk", size: "1.23 MB"},
+            {name: "WifiAnalyzer.apk", size: "1.87 MB"},
+            {name: "WifiConnecte.apk", size: "41.67 KB"},
+            {name: "Wibr.apk", size: "383 KB"},
+            {name: "WiFiLeaks.apk", size: "4.79 MB"},
+            {name: "WiFiRadar.apk", size: "224 KB"},
+            {name: "WiFiUnlocker.apk", size: "1.05 MB"},
+            {name: "WPS-WPA-Tester.apk", size: "3.80 MB"},
+            {name: "WLan-Audit.apk", size: "1.66 MB"},
+            {name: "WPS-Pin.apk", size: "356 KB"},
+            {name: "WIBR-Pro.apk", size: "1.36 MB"},
+            {name: "Radar-Me.apk", size: "1.58 MB"},
+            {name: "Zanti.apk", size: "12 MB"},
+            {name: "NetCut.apk", size: "4 MB"},
+            {name: "WiFiKill.apk", size: "2 MB"},
+            {name: "Csploit.apk", size: "15 MB"},
+            {name: "Nmap.apk", size: "25 MB"},
+            {name: "DroidSheep.apk", size: "3 MB"},
+            {name: "LuckyPatcher.apk", size: "10 MB"},
+            {name: "Termux.apk", size: "18 MB"},
+            {name: "Kali-Nethunter.apk", size: "50 MB"}
+        ];
+
+        const grid = document.getElementById('grid');
+        apps.forEach(app => {
+            const imgName = app.name.replace('.apk', '.png');
+            // ফেক ডাউনলোড সংখ্যা জেনারেট করা (যেমন: 450K+)
+            const fakeDownloads = Math.floor(Math.random() * (900 - 100) + 100) + "K+";
+            
+            grid.innerHTML += `
+                <div class="animated-card" style="justify-content: space-between;">
+                    <div style="display: flex; align-items: center;">
+                        <div class="icon-circle" style="background: none; overflow: hidden; border: none;">
+                             <img src="${imgName}" style="width: 100%; height: 100%; object-fit: contain;" 
+                             onerror="this.src='https://cdn-icons-png.flaticon.com/512/2586/2586488.png'">
+                        </div>
+                        <div class="box-info">
+                            <h4>${app.name}</h4>
+                            <p>Size: ${app.size} | <span style="color: var(--neon-green); font-weight: bold;">${fakeDownloads} Downloads</span></p>
+                        </div>
+                    </div>
+                    <a href="${app.name}" download class="get-btn">GET</a>
+                </div>`;
+        });
+    </script>
+</body>
+</html>
+
