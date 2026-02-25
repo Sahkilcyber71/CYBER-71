@@ -346,24 +346,31 @@
             {name: "org.adaway_60104.png", img: "logos/org.adaway_60104.png"}
         ];
 
-        function renderApps(filteredApps) {
-            const grid = document.getElementById('grid');
-            grid.innerHTML = '';
-            filteredApps.forEach(app => {
-                const dl = Math.floor(Math.random() * 800 + 100) + "K+";
-                grid.innerHTML += `
-                    <div class="animated-card app-card">
-                        <div style="display: flex; align-items: center;">
-                            <div class="app-img-container">
-                                 <img src="${app.img}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2586/2586488.png'">
-                            </div>
-                            <div class="box-info"><h4>${app.name}</h4><p>${dl} Downloads</p></div>
-                        </div>
-                        <a href="#" class="get-btn">GET</a>
-                    </div>
-                `;
-            });
-        }
+        function renderApps() {
+    const container = document.getElementById('apps-container');
+    container.innerHTML = '';
+    
+    apps.forEach(app => {
+        const appCard = document.createElement('div');
+        appCard.className = 'app-card';
+        
+        // ফোল্ডারের নাম 'Apps' (বড় হাতের A) নিশ্চিত করা হয়েছে
+        const iconPath = `Apps/${app.folder}/icon.png`;
+        const entryPath = `Apps/${app.folder}/index.html`;
+        
+        appCard.innerHTML = `
+            <img src="${iconPath}" alt="${app.name} Icon" onerror="this.src='assets/default-icon.png'">
+            <h3>${app.name}</h3>
+        `;
+        
+        appCard.onclick = () => {
+            window.location.href = entryPath;
+        };
+        
+        container.appendChild(appCard);
+    });
+}
+
 
         function filterApps() {
             const term = document.getElementById('searchInput').value.toLowerCase();
