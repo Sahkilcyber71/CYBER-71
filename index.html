@@ -318,59 +318,62 @@
             }
         }
 
-        // আপনার গিটহাবের ফাইলের নাম অনুযায়ী ২৪টি অ্যাপ আপডেট করা হয়েছে
+                // আপনার কনফিগারেশন অনুযায়ী সঠিক পাথ সেট করা হয়েছে
         const apps = [
-            {name: "AirMon_v1.8.apk", img: "logos/AirMon_v1.8.png"},
-            {name: "Andro Dumpper.apk", img: "logos/Andro Dumpper.png"},
-            {name: "Claves Wifi.apk", img: "logos/Claves Wifi.png"},
-            {name: "Liberad A Wifi v1.0.png", img: "logos/Liberad A Wifi v1.0.png"},
-            {name: "Mac2WepKey HHG5XX v15.png", img: "logos/Mac2WepKey HHG5XX v15.png"},
-            {name: "OpenSignal v6.0.7-1.png", img: "logos/OpenSignal v6.0.7-1.png"},
-            {name: "Pry-Fi.png", img: "logos/Pry-Fi.png"},
-            {name: "PulWiFi.png", img: "logos/PulWiFi.png"},
-            {name: "Radar Me.png", img: "logos/Radar Me.png"},
-            {name: "SpeedKey.png", img: "logos/SpeedKey.png"},
-            {name: "WIBR Pro.png", img: "logos/WIBR Pro.png"},
-            {name: "WLan Audit.png", img: "logos/WLan Audit.png"},
-            {name: "WPS Pin.png", img: "logos/WPS Pin.png"},
-            {name: "WPS-WPA-Tester-Premium-3.png", img: "logos/WPS-WPA-Tester-Premium-3.png"},
-            {name: "WiFi Radar.png", img: "logos/WiFi Radar.png"},
-            {name: "WiFi Unlocker.png", img: "logos/WiFi Unlocker.png"},
-            {name: "WiFiLeaks.png", img: "logos/WiFiLeaks.png"},
-            {name: "Wibr.png", img: "logos/Wibr.png"},
-            {name: "Wifi Analyzer.png", img: "logos/Wifi Analyzer.png"},
-            {name: "Wifi Connecter Library.png", img: "logos/Wifi Connecter Library.png"},
-            {name: "Wifi Password.png", img: "logos/Wifi Password.png"},
-            {name: "WifiAccess.png", img: "logos/WifiAccess.png"},
-            {name: "apk-editor-1-9-0.png", img: "logos/apk-editor-1-9-0.png"},
-            {name: "org.adaway_60104.png", img: "logos/org.adaway_60104.png"}
+            {name: "AirMon_v1.8", folder: "AirMon_v1.8.apk"},
+            {name: "Andro Dumpper", folder: "Andro Dumpper.apk"},
+            {name: "Claves Wifi", folder: "Claves Wifi.apk"},
+            {name: "Liberad A Wifi v1.0", folder: "Liberad A Wifi v1.0.png"},
+            {name: "Mac2WepKey HHG5XX v15", folder: "Mac2WepKey HHG5XX v15.png"},
+            {name: "OpenSignal v6.0.7-1", folder: "OpenSignal v6.0.7-1.png"},
+            {name: "Pry-Fi", folder: "Pry-Fi.png"},
+            {name: "PulWiFi", folder: "PulWiFi.png"},
+            {name: "Radar Me", folder: "Radar Me.png"},
+            {name: "SpeedKey", folder: "SpeedKey.png"},
+            {name: "WIBR Pro", folder: "WIBR Pro.png"},
+            {name: "WLan Audit", folder: "WLan Audit.png"},
+            {name: "WPS Pin", folder: "WPS Pin.png"},
+            {name: "WPS-WPA-Tester-Premium-3", folder: "WPS-WPA-Tester-Premium-3.png"},
+            {name: "WiFi Radar", folder: "WiFi Radar.png"},
+            {name: "WiFi Unlocker", folder: "WiFi Unlocker.png"},
+            {name: "WiFiLeaks", folder: "WiFiLeaks.png"},
+            {name: "Wibr", folder: "Wibr.png"},
+            {name: "Wifi Analyzer", folder: "Wifi Analyzer.png"},
+            {name: "Wifi Connecter Library", folder: "Wifi Connecter Library.png"},
+            {name: "Wifi Password", folder: "Wifi Password.png"},
+            {name: "WifiAccess", folder: "WifiAccess.png"},
+            {name: "apk-editor-1-9-0", folder: "apk-editor-1-9-0.png"},
+            {name: "org.adaway_60104", folder: "org.adaway_60104.png"}
         ];
 
-        function renderApps() {
-    const container = document.getElementById('apps-container');
-    container.innerHTML = '';
-    
-    apps.forEach(app => {
-        const appCard = document.createElement('div');
-        appCard.className = 'app-card';
-        
-        // ফোল্ডারের নাম 'Apps' (বড় হাতের A) নিশ্চিত করা হয়েছে
-        const iconPath = `Apps/${app.folder}/icon.png`;
-        const entryPath = `Apps/${app.folder}/index.html`;
-        
-        appCard.innerHTML = `
-            <img src="${iconPath}" alt="${app.name} Icon" onerror="this.src='assets/default-icon.png'">
-            <h3>${app.name}</h3>
-        `;
-        
-        appCard.onclick = () => {
-            window.location.href = entryPath;
-        };
-        
-        container.appendChild(appCard);
-    });
-}
+        function renderApps(filteredApps) {
+            const grid = document.getElementById('grid'); // আপনার ID ছিল 'grid'
+            grid.innerHTML = '';
+            
+            filteredApps.forEach(app => {
+                const dl = Math.floor(Math.random() * 800 + 100) + "K+";
+                
+                // এখানে 'Apps' ফোল্ডার ব্যবহার করা হয়েছে আপনার রিকোয়েস্ট অনুযায়ী
+                const iconPath = `Apps/${app.folder}/icon.png`;
+                const indexPath = `Apps/${app.folder}/index.html`;
 
+                grid.innerHTML += `
+                    <div class="animated-card app-card" onclick="location.href='${indexPath}'" style="cursor:pointer;">
+                        <div style="display: flex; align-items: center;">
+                            <div class="app-img-container">
+                                 <img src="${iconPath}" onerror="this.src='logos/default.png'">
+                            </div>
+                            <div class="box-info">
+                                <h4>${app.name}</h4>
+                                <p>${dl} Downloads</p>
+                            </div>
+                        </div>
+                        <a href="${indexPath}" class="get-btn">GET</a>
+                    </div>
+                `;
+            });
+        }
+    }
 
         function filterApps() {
             const term = document.getElementById('searchInput').value.toLowerCase();
