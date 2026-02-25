@@ -24,7 +24,6 @@
             overflow-x: hidden;
         }
 
-        /* --- RGB Border Animation --- */
         @keyframes rgb-border {
             0% { border-color: #ff0000; box-shadow: 0 0 10px #ff0000; }
             25% { border-color: #00ff00; box-shadow: 0 0 10px #00ff00; }
@@ -33,7 +32,6 @@
             100% { border-color: #ff0000; box-shadow: 0 0 10px #ff0000; }
         }
 
-        /* --- 3-Dot Menu & Sidebar --- */
         .menu-dots {
             position: fixed;
             top: 20px;
@@ -88,7 +86,6 @@
             box-sizing: border-box;
         }
 
-        /* --- Header Scene --- */
         .header-scene {
             margin-top: 40px;
             margin-bottom: 20px;
@@ -109,7 +106,6 @@
         .profile-img { width: 80%; height: 80%; border-radius: 50%; object-fit: cover; }
         @keyframes rotate3d { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
 
-        /* --- Typing Titles Styling --- */
         .main-title { 
             font-size: 2.2rem; 
             color: var(--neon-blue); 
@@ -136,7 +132,6 @@
         }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* --- Social & App Cards --- */
         .social-container, .app-list {
             width: 100%;
             max-width: 450px;
@@ -209,7 +204,6 @@
             font-size: 0.9rem;
         }
         .category-item:hover { background: rgba(0, 210, 255, 0.1); border-color: var(--neon-blue); }
-
     </style>
 </head>
 <body>
@@ -231,12 +225,11 @@
         <div class="category-item">🛠️ Pentest Tools</div>
     </div>
 
-        <div class="header-scene">
+    <div class="header-scene">
         <div class="circle-outer">
-            <img src="shakil.png" class="profile-img" alt="Sahkil" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+            <img src="logos/shakil.png" class="profile-img" alt="Sahkil" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
         </div>
     </div>
-
 
     <h1 class="main-title" id="typing-title"></h1>
     <p class="sub-title" id="typing-subtitle"></p>
@@ -280,82 +273,72 @@
 
         const titleContent = "𝐒𝐚𝐡𝐤𝐢𝐥𝐜𝐲𝐛𝐞𝐫𝟕𝟏🧑‍💻";
         const subtitleContent = "Cyber Security & Pentesting Tools";
-        let tIdx = 0;
-        let sIdx = 0;
-        let isDeleting = false;
+        let tIdx = 0; let sIdx = 0; let isDeleting = false;
 
         function handleTyping() {
             const titleEl = document.getElementById("typing-title");
             const subEl = document.getElementById("typing-subtitle");
-
             if (!isDeleting) {
                 if (tIdx < titleContent.length) {
                     titleEl.innerHTML = titleContent.substring(0, tIdx + 1) + '<span class="cursor">_</span>';
-                    tIdx++;
-                    setTimeout(handleTyping, 120);
+                    tIdx++; setTimeout(handleTyping, 120);
                 } else if (sIdx < subtitleContent.length) {
                     titleEl.innerHTML = titleContent; 
                     subEl.innerHTML = subtitleContent.substring(0, sIdx + 1) + '<span class="cursor">|</span>';
-                    sIdx++;
-                    setTimeout(handleTyping, 60);
+                    sIdx++; setTimeout(handleTyping, 60);
                 } else {
                     setTimeout(() => { isDeleting = true; handleTyping(); }, 1000);
                 }
             } else {
                 if (sIdx > 0) {
                     subEl.innerHTML = subtitleContent.substring(0, sIdx - 1) + '<span class="cursor">|</span>';
-                    sIdx--;
-                    setTimeout(handleTyping, 30);
+                    sIdx--; setTimeout(handleTyping, 30);
                 } else if (tIdx > 0) {
                     subEl.innerHTML = ""; 
                     titleEl.innerHTML = titleContent.substring(0, tIdx - 1) + '<span class="cursor">_</span>';
-                    tIdx--;
-                    setTimeout(handleTyping, 50);
+                    tIdx--; setTimeout(handleTyping, 50);
                 } else {
-                    isDeleting = false;
-                    setTimeout(handleTyping, 500);
+                    isDeleting = false; setTimeout(handleTyping, 500);
                 }
             }
         }
 
-                        // আপনার সঠিক অ্যাপ লিস্ট এবং ফোল্ডার পাথ
+        // আপনার ফোল্ডারের নাম অনুযায়ী অ্যারে
         const apps = [
-            {name: "AirMon_v1.8", folder: "AirMon_v1.8.apk"},
-            {name: "Andro Dumpper", folder: "Andro Dumpper.apk"},
-            {name: "Claves Wifi", folder: "Claves Wifi.apk"},
-            {name: "Liberad A Wifi v1.0", folder: "Liberad A Wifi v1.0.png"},
-            {name: "Mac2WepKey HHG5XX v15", folder: "Mac2WepKey HHG5XX v15.png"},
-            {name: "OpenSignal v6.0.7-1", folder: "OpenSignal v6.0.7-1.png"},
-            {name: "Pry-Fi", folder: "Pry-Fi.png"},
-            {name: "PulWiFi", folder: "PulWiFi.png"},
-            {name: "Radar Me", folder: "Radar Me.png"},
-            {name: "SpeedKey", folder: "SpeedKey.png"},
-            {name: "WIBR Pro", folder: "WIBR Pro.png"},
-            {name: "WLan Audit", folder: "WLan Audit.png"},
-            {name: "WPS Pin", folder: "WPS Pin.png"},
-            {name: "WPS-WPA-Tester-Premium-3", folder: "WPS-WPA-Tester-Premium-3.png"},
-            {name: "WiFi Radar", folder: "WiFi Radar.png"},
-            {name: "WiFi Unlocker", folder: "WiFi Unlocker.png"},
-            {name: "WiFiLeaks", folder: "WiFiLeaks.png"},
-            {name: "Wibr", folder: "Wibr.png"},
-            {name: "Wifi Analyzer", folder: "Wifi Analyzer.png"},
-            {name: "Wifi Connecter Library", folder: "Wifi Connecter Library.png"},
-            {name: "Wifi Password", folder: "Wifi Password.png"},
-            {name: "WifiAccess", folder: "WifiAccess.png"},
-            {name: "apk-editor-1-9-0", folder: "apk-editor-1-9-0.png"},
-            {name: "org.adaway_60104", folder: "org.adaway_60104.png"}
+            {name: "AirMon_v1.8", file: "AirMon_v1.8.apk"},
+            {name: "Andro Dumpper", file: "Andro Dumpper.apk"},
+            {name: "Claves Wifi", file: "Claves Wifi.apk"},
+            {name: "Liberad A Wifi v1.0", file: "Liberad A Wifi v1.0.png"},
+            {name: "Mac2WepKey HHG5XX v15", file: "Mac2WepKey HHG5XX v15.png"},
+            {name: "OpenSignal v6.0.7-1", file: "OpenSignal v6.0.7-1.png"},
+            {name: "Pry-Fi", file: "Pry-Fi.png"},
+            {name: "PulWiFi", file: "PulWiFi.png"},
+            {name: "Radar Me", file: "Radar Me.png"},
+            {name: "SpeedKey", file: "SpeedKey.png"},
+            {name: "WIBR Pro", file: "WIBR Pro.png"},
+            {name: "WLan Audit", file: "WLan Audit.png"},
+            {name: "WPS Pin", file: "WPS Pin.png"},
+            {name: "WPS-WPA-Tester-Premium-3", file: "WPS-WPA-Tester-Premium-3.png"},
+            {name: "WiFi Radar", file: "WiFi Radar.png"},
+            {name: "WiFi Unlocker", file: "WiFi Unlocker.png"},
+            {name: "WiFiLeaks", file: "WiFiLeaks.png"},
+            {name: "Wibr", file: "Wibr.png"},
+            {name: "Wifi Analyzer", file: "Wifi Analyzer.png"},
+            {name: "Wifi Connecter Library", file: "Wifi Connecter Library.png"},
+            {name: "Wifi Password", file: "Wifi Password.png"},
+            {name: "WifiAccess", file: "WifiAccess.png"},
+            {name: "apk-editor-1-9-0", file: "apk-editor-1-9-0.png"},
+            {name: "org.adaway_60104", file: "org.adaway_60104.png"}
         ];
 
         function renderApps(filteredApps) {
-            const grid = document.getElementById('grid'); // আপনার HTML এ আইডি ছিল 'grid'
+            const grid = document.getElementById('grid');
             grid.innerHTML = '';
-            
             filteredApps.forEach(app => {
                 const dl = Math.floor(Math.random() * 800 + 100) + "K+";
-                
-                // বড় হাতের 'Apps' ফোল্ডার ব্যবহার করা হয়েছে
-                const iconPath = `Apps/${app.folder}/icon.png`;
-                const indexPath = `Apps/${app.folder}/index.html`;
+                // পাথ লজিক: Apps/ফোল্ডার-নাম/ফাইল
+                const downloadPath = `Apps/${app.file}/${app.file}`;
+                const iconPath = `Apps/${app.file}/icon.png`;
 
                 grid.innerHTML += `
                     <div class="animated-card app-card">
@@ -363,42 +346,19 @@
                             <div class="app-img-container">
                                  <img src="${iconPath}" onerror="this.src='logos/shakil.png'">
                             </div>
-                            <div class="box-info">
-                                <h4>${app.name}</h4>
-                                <p>${dl} Downloads</p>
-                            </div>
+                            <div class="box-info"><h4>${app.name}</h4><p>${dl} Downloads</p></div>
                         </div>
-                        <a href="${indexPath}" class="get-btn">GET</a>
+                        <a href="${downloadPath}" download class="get-btn" onclick="playSound()">GET</a>
                     </div>
                 `;
             });
         }
 
-        // সার্চ করার জন্য ফিল্টার ফাংশন
         function filterApps() {
             const term = document.getElementById('searchInput').value.toLowerCase();
             const filtered = apps.filter(app => app.name.toLowerCase().includes(term));
             renderApps(filtered);
         }
-
-        // পেজ লোড হলে অ্যাপগুলো দেখাবে
-        window.onload = () => {
-            handleTyping();
-            renderApps(apps);
-        };
-
-
-        document.querySelectorAll('.social-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                playSound();
-                // If it's a real link, we let it navigate after a small delay
-                const href = btn.getAttribute('href');
-                if(href && href !== "#") {
-                    e.preventDefault();
-                    setTimeout(() => { window.location.href = href; }, 300);
-                }
-            });
-        });
 
         window.onload = () => {
             handleTyping();
@@ -407,4 +367,3 @@
     </script>
 </body>
 </html>
-
