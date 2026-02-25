@@ -318,7 +318,7 @@
             }
         }
 
-                // আপনার কনফিগারেশন অনুযায়ী সঠিক পাথ সেট করা হয়েছে
+                        // আপনার সঠিক অ্যাপ লিস্ট এবং ফোল্ডার পাথ
         const apps = [
             {name: "AirMon_v1.8", folder: "AirMon_v1.8.apk"},
             {name: "Andro Dumpper", folder: "Andro Dumpper.apk"},
@@ -347,21 +347,21 @@
         ];
 
         function renderApps(filteredApps) {
-            const grid = document.getElementById('grid'); // আপনার ID ছিল 'grid'
+            const grid = document.getElementById('grid'); // আপনার HTML এ আইডি ছিল 'grid'
             grid.innerHTML = '';
             
             filteredApps.forEach(app => {
                 const dl = Math.floor(Math.random() * 800 + 100) + "K+";
                 
-                // এখানে 'Apps' ফোল্ডার ব্যবহার করা হয়েছে আপনার রিকোয়েস্ট অনুযায়ী
+                // বড় হাতের 'Apps' ফোল্ডার ব্যবহার করা হয়েছে
                 const iconPath = `Apps/${app.folder}/icon.png`;
                 const indexPath = `Apps/${app.folder}/index.html`;
 
                 grid.innerHTML += `
-                    <div class="animated-card app-card" onclick="location.href='${indexPath}'" style="cursor:pointer;">
+                    <div class="animated-card app-card">
                         <div style="display: flex; align-items: center;">
                             <div class="app-img-container">
-                                 <img src="${iconPath}" onerror="this.src='logos/default.png'">
+                                 <img src="${iconPath}" onerror="this.src='logos/shakil.png'">
                             </div>
                             <div class="box-info">
                                 <h4>${app.name}</h4>
@@ -373,13 +373,20 @@
                 `;
             });
         }
-    }
 
+        // সার্চ করার জন্য ফিল্টার ফাংশন
         function filterApps() {
             const term = document.getElementById('searchInput').value.toLowerCase();
             const filtered = apps.filter(app => app.name.toLowerCase().includes(term));
             renderApps(filtered);
         }
+
+        // পেজ লোড হলে অ্যাপগুলো দেখাবে
+        window.onload = () => {
+            handleTyping();
+            renderApps(apps);
+        };
+
 
         document.querySelectorAll('.social-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
