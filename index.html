@@ -211,9 +211,25 @@
             cursor: pointer;
             font-size: 0.9rem;
         }
+    
         .category-item:hover { background: rgba(0, 210, 255, 0.1); border-color: var(--neon-blue); }
+    
+            /* তোমার আগের সব ডিজাইন এখানে থাকবে */
 
-    </style>
+        /* এই নতুন কোডটুকু শেষে বসিয়ে দাও */
+        @keyframes getPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .get-btn {
+            animation: getPulse 1.5s infinite ease-in-out;
+            display: inline-block;
+            text-align: center;
+        }
+         
+    </style>   
+ 
 </head>
 <body>
 
@@ -354,23 +370,44 @@
         ];
 
         function renderApps(filteredApps) {
-            const grid = document.getElementById('grid');
-            grid.innerHTML = '';
-            filteredApps.forEach(app => {
-                const dl = Math.floor(Math.random() * 800 + 100) + "K+";
-                grid.innerHTML += `
-                    <div class="animated-card app-card">
-                        <div style="display: flex; align-items: center;">
-                            <div class="app-img-container">
-                                 <img src="logos/${app.name.replace('.apk', '.png')}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2850/2850331.png'">
-                            </div>
-                            <div class="box-info"><h4>${app.name}</h4><p>Part of ZIP Archive</p></div>
-                        </div>
-                        <a href="${app.zip}" class="get-btn" target="_blank">GET ZIP</a>
-                    </div>
-                `;
-            });
+    const grid = document.getElementById('grid');
+    grid.innerHTML = '';
+    filteredApps.forEach(app => {
+        
+        // ফেক ডাউনলোড সংখ্যা ক্যাটাগরি অনুযায়ী সেট করা
+        let dl;
+        const randomNum = Math.random();
+        
+        if (randomNum > 0.7) {
+            dl = Math.floor(Math.random() * (150 - 100) + 100) + "K+"; // ১০০কে-১৫০কে এর মধ্যে
+        } else if (randomNum > 0.4) {
+            dl = Math.floor(Math.random() * (60 - 40) + 40) + "K+";   // ৪০কে-৬০কে এর মধ্যে
+        } else {
+            dl = Math.floor(Math.random() * (35 - 20) + 20) + "K+";   // ২০কে-৩৫কে এর মধ্যে
         }
+
+        let zipLink = "https://github.com/user-attachments/files/25597741/Apps.zip";
+        if(app.name.includes("OpenSignal") || app.name.includes("Pry-Fi")) {
+            zipLink = "https://github.com/user-attachments/files/25597730/Apps.2.zip";
+        }
+
+        grid.innerHTML += `
+            <div class="animated-card app-card">
+                <div style="display: flex; align-items: center;">
+                    <div class="app-img-container">
+                         <img src="${app.img}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2586/2586488.png'">
+                    </div>
+                    <div class="box-info">
+                        <h4>${app.name}</h4>
+                        <p>${dl} Downloads</p>
+                    </div>
+                </div>
+                <a href="${zipLink}" class="get-btn" download>GET</a>
+            </div>
+        `;
+    });
+}
+
 
 
         function filterApps() {
