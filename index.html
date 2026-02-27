@@ -321,31 +321,36 @@
             }
         }
 
-        const apps = [
-            {name: "AirMon_v1.8.apk", img: "logos/AirMon_v1.8.png"},
-            {name: "Andro Dumpper.apk", img: "logos/Andro Dumpper.png"},
-            {name: "Claves Wifi.apk", img: "logos/Claves Wifi.png"},
-            {name: "Liberad A Wifi v1.0.apk", img: "logos/Liberad A Wifi v1.0.png"},
-            {name: "Mac2WepKey HHG5XX v15.apk", img: "logos/Mac2WepKey HHG5XX v15.png"},
-            {name: "OpenSignal v6.0.7-1.apk", img: "logos/OpenSignal v6.0.7-1.png"},
-            {name: "Pry-Fi.apk", img: "logos/Pry-Fi.png"},
-            {name: "PulWiFi.apk", img: "logos/PulWiFi.png"},
-            {name: "Radar Me.apk", img: "logos/Radar Me.png"},
-            {name: "SpeedKey.apk", img: "logos/SpeedKey.png"},
-            {name: "WIBR Pro.apk", img: "logos/WIBR Pro.png"},
-            {name: "WLan Audit.apk", img: "logos/WLan Audit.png"},
-            {name: "WPS Pin.apk", img: "logos/WPS Pin.png"},
-            {name: "WPS-WPA-Tester-Premium-3.apk", img: "logos/WPS-WPA-Tester-Premium-3.png"},
-            {name: "WiFi Radar.apk", img: "logos/WiFi Radar.png"},
-            {name: "WiFi Unlocker.apk", img: "logos/WiFi Unlocker.png"},
-            {name: "WiFiLeaks.apk", img: "logos/WiFiLeaks.png"},
-            {name: "Wibr.apk", img: "logos/Wibr.png"},
-            {name: "Wifi Analyzer.apk", img: "logos/Wifi Analyzer.png"},
-            {name: "Wifi Connecter Library.apk", img: "logos/Wifi Connecter Library.png"},
-            {name: "Wifi Password.apk", img: "logos/Wifi Password.png"},
-            {name: "WifiAccess.apk", img: "logos/WifiAccess.png"},
-            {name: "apk-editor-1-9-0.apk", img: "logos/apk-editor-1-9-0.png"},
-            {name: "org.adaway_60104.apk", img: "logos/org.adaway_60104.png"}
+                const apps = [
+            // Group 1: Linked to Apps.zip
+            {name: "AirMon_v1.8.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "Andro Dumpper.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "Claves Wifi.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "Liberad A Wifi v1.0.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "Mac2WepKey HHG5XX v15.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "WIBR Pro.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "WLan Audit.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "WPS Pin.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+
+            // Group 2: Linked to Apps (2).zip
+            {name: "OpenSignal v6.0.7-1.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
+            {name: "Pry-Fi.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
+            {name: "PulWiFi.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
+            {name: "Radar Me.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
+            {name: "SpeedKey.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
+            {name: "WiFi Radar.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
+            {name: "WiFi Unlocker.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
+            {name: "WiFiLeaks.apk", zip: "https://github.com/user-attachments/files/25597730/Apps.2.zip"},
+
+            // Group 3: Linked to the 3rd Zip (Apps.zip link reused as placeholder)
+            {name: "WPS-WPA-Tester-Premium-3.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "Wibr.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "Wifi Analyzer.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "Wifi Connecter Library.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "Wifi Password.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "WifiAccess.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "apk-editor-1-9-0.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"},
+            {name: "org.adaway_60104.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"}
         ];
 
         function renderApps(filteredApps) {
@@ -353,22 +358,20 @@
             grid.innerHTML = '';
             filteredApps.forEach(app => {
                 const dl = Math.floor(Math.random() * 800 + 100) + "K+";
-                // GitHub Direct Download Link
-                const downloadLink = `https://github.com/Sahkilcybe/CYBER-71/raw/main/Apps/${encodeURIComponent(app.name)}`;
-                
                 grid.innerHTML += `
                     <div class="animated-card app-card">
                         <div style="display: flex; align-items: center;">
                             <div class="app-img-container">
-                                 <img src="${app.img}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2586/2586488.png'">
+                                 <img src="logos/${app.name.replace('.apk', '.png')}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2850/2850331.png'">
                             </div>
-                            <div class="box-info"><h4>${app.name}</h4><p>${dl} Downloads</p></div>
+                            <div class="box-info"><h4>${app.name}</h4><p>Part of ZIP Archive</p></div>
                         </div>
-                        <a href="${downloadLink}" class="get-btn" download>GET</a>
+                        <a href="${app.zip}" class="get-btn" target="_blank">GET ZIP</a>
                     </div>
                 `;
             });
         }
+
 
         function filterApps() {
             const term = document.getElementById('searchInput').value.toLowerCase();
