@@ -374,35 +374,33 @@
     grid.innerHTML = '';
     filteredApps.forEach(app => {
         
-        // ফেক ডাউনলোড সংখ্যা ক্যাটাগরি অনুযায়ী সেট করা
+        // ফেক ডাউনলোড ক্যাটাগরি (১০০কে, ৫০কে, ৩০কে)
         let dl;
         const randomNum = Math.random();
-        
         if (randomNum > 0.7) {
-            dl = Math.floor(Math.random() * (150 - 100) + 100) + "K+"; // ১০০কে-১৫০কে এর মধ্যে
+            dl = Math.floor(Math.random() * (150 - 100) + 100) + "K+"; 
         } else if (randomNum > 0.4) {
-            dl = Math.floor(Math.random() * (60 - 40) + 40) + "K+";   // ৪০কে-৬০কে এর মধ্যে
+            dl = Math.floor(Math.random() * (60 - 40) + 40) + "K+";
         } else {
-            dl = Math.floor(Math.random() * (35 - 20) + 20) + "K+";   // ২০কে-৩৫কে এর মধ্যে
+            dl = Math.floor(Math.random() * (35 - 20) + 20) + "K+";
         }
 
-        let zipLink = "https://github.com/user-attachments/files/25597741/Apps.zip";
-        if(app.name.includes("OpenSignal") || app.name.includes("Pry-Fi")) {
-            zipLink = "https://github.com/user-attachments/files/25597730/Apps.2.zip";
-        }
+        // লোগো সল্যুশন: এপিকে নামকে পিএনজিতে কনভার্ট করা
+        // উদাহরণ: "AirMon_v1.8.apk" হবে "logos/AirMon_v1.8.png"
+        const logoImg = `logos/${app.name.replace('.apk', '.png')}`;
 
         grid.innerHTML += `
             <div class="animated-card app-card">
                 <div style="display: flex; align-items: center;">
                     <div class="app-img-container">
-                         <img src="${app.img}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2586/2586488.png'">
+                         <img src="${logoImg}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2586/2586488.png'">
                     </div>
                     <div class="box-info">
                         <h4>${app.name}</h4>
                         <p>${dl} Downloads</p>
                     </div>
                 </div>
-                <a href="${zipLink}" class="get-btn" download>GET</a>
+                <a href="${app.zip}" class="get-btn" download>GET</a>
             </div>
         `;
     });
