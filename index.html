@@ -242,17 +242,26 @@
             {name: "org.adaway_60104.apk", zip: "https://github.com/user-attachments/files/25597741/Apps.zip"}
         ];
 
-        function renderApps() {
+                function renderApps() {
             const grid = document.getElementById('grid');
             apps.forEach(app => {
+                // এখানে আপনার গিটহাবের লোগো পাথ বসানো হয়েছে
+                const logoPath = `logos/${app.name}.png`; 
+                
                 grid.innerHTML += `
                     <div class="animated-card search-item">
-                        <div class="app-img-container"><img src="https://cdn-icons-png.flaticon.com/512/2586/2586488.png"></div>
-                        <div class="box-info"><h4>${app.name}</h4><p>Premium Mod</p></div>
+                        <div class="app-img-container">
+                            <img src="${logoPath}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2586/2586488.png'">
+                        </div>
+                        <div class="box-info">
+                            <h4>${app.name}</h4>
+                            <p>Premium Mod</p>
+                        </div>
                         <a href="${app.zip}" class="get-btn">GET</a>
                     </div>`;
             });
         }
+
 
         const titleContent = "𝐒𝐚𝐡𝐤𝐢𝐥𝐜𝐲𝐛𝐞𝐫𝟕𝟏🧑‍💻";
         const subtitleContent = "Cyber Security & Pentesting Tools";
